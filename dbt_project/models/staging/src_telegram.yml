@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+  - name: public
+    tables:
+      - name: raw_telegram_messages
+      - name: raw_image_detections

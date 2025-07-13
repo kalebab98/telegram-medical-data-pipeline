@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: dim_channels
+    description: "Dimension table for Telegram channels."
+    columns:
+      - name: channel_name
+        description: "Name of the Telegram channel."
+        tests: [unique, not_null]
+      - name: first_message_date
+        description: "Date of the first message in the channel."
+      - name: last_message_date
+        description: "Date of the last message in the channel."
+      - name: total_messages
+        description: "Total number of messages in the channel."
+
+  - name: dim_dates
+    description: "Dimension table for dates."
+    columns:
+      - name: date_id
+        description: "Date (YYYY-MM-DD)."
+        tests: [unique, not_null]
+      - name: year
+        description: "Year."
+      - name: month
+        description: "Month."
+      - name: day
+        description: "Day."
+      - name: day_of_week
+        description: "Day of week."
+      - name: week
+        description: "Week number."
+
+  - name: fct_messages
+    description: "Fact table of Telegram messages."
+    columns:
+      - name: message_id
+        description: "Unique ID for the message."
+        tests: [unique, not_null]
+      - name: channel_name
+        description: "Channel name."
+        tests: [not_null]
+      - name: date_id
+        description: "Date of the message."
+        tests: [not_null]
+      - name: sender_id
+        description: "Sender's user ID."
+      - name: text
+        description: "Message text."
+      - name: has_image
+        description: "True if message has an image."
+      - name: has_document
+        description: "True if message has a document."
+      - name: has_video
+        description: "True if message has a video."
+      - name: has_audio
+        description: "True if message has audio."
+      - name: media_type
+        description: "Type of media."
+      - name: local_media_path
+        description: "Path to the media file."
+
+  - name: fct_image_detections
+    description: "Fact table of YOLOv8 object detections on Telegram images, joined to messages."
+    columns:
+      - name: message_id
+        description: "ID of the Telegram message (foreign key to fct_messages)"
+        tests: [not_null]
+      - name: image_path
+        description: "Path to the image file"
+        tests: [not_null]
+      - name: detected_object_class
+        description: "YOLOv8 detected object class"
+        tests: [not_null]
+      - name: confidence_score
+        description: "YOLOv8 detection confidence score"
