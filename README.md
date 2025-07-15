@@ -222,4 +222,3 @@ dagster dev
 <img width="1206" height="910" alt="search-messages" src="https://github.com/user-attachments/assets/26d31c79-7607-4089-9e0f-eac48b700de2" />
 <img width="1911" height="913" alt="Screenshot 2025-07-15 210758" src="https://github.com/user-attachments/assets/987b9664-7f7e-4edf-9802-a83204e908fb" />
 <img width="1909" height="901" alt="Screenshot 2025-07-15 210635" src="https://github.com/user-attachments/assets/2994e018-5def-4a13-9214-e0c9c800e560" />
- reach out to the maintainers.
